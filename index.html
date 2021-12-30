@@ -6,8 +6,14 @@
     <title>Document</title>
 </head>
 <body>
-    <!you can add the defer keyword after the src attribute to defer running of the JS file until after the HTML file is parsed>
-    <script src="index.js">
+    <div id="container">
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissors">Scissors</button>
+    </div>
+    <!you can add the defer keyword after the src attribute>
+    <!to defer running of the JS file until after the HTML file is parsed>
+    <script src="index.js" defer>
         console.log("Hello, World!")
     </script>
 </body>
