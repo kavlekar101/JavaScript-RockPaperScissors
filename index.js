@@ -70,6 +70,17 @@ function playRound(playerSelection, computerSelection) {
 const div = document.createElement('div');
 div.classList.add('content');
 
+div.style.color = 'blue';
+// adds the indicated style rule
+
+div.style.cssText = 'color: blue; background: white';
+// adds several style rules
+
+div.setAttribute('style', 'color: blue; top: 75%');
+// adds several style rules
+
+div.style.fontSize = "large";
+
 /*
 * adding in the action listeners for the buttons.
 */
@@ -80,7 +91,7 @@ buttons.forEach((button) => {
 
     // and for each one we add a 'click' listener
     button.addEventListener('click', () => {
-        playRound(button.id, computerPlay());
+        alert(playRound(button.id, computerPlay()));
         displayScore(div);
         displayWinner();
     });

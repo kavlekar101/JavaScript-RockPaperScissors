@@ -1,0 +1,31 @@
+div {  
+    position:absolute;
+    top:0px;
+    right:0px;
+    bottom:0px;
+    left:0px;
+    text-align: center;
+    margin-top: 0%;
+    
+}
+
+button {
+    background-color: #000000;
+    color: #FFFFFF;
+    padding: 10px;
+    border-radius: 10px;
+    height: 140px;
+    width: 210px;
+    margin-top: 12%;
+    display: inline-block;
+    margin-inline: 100px;
+}
+
+img {
+  height: 120px;
+  width: 190px;
+}
+
+h1 {
+    font: 50px Arial, sans-serif;
+}
