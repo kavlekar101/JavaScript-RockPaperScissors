@@ -43,6 +43,10 @@ function playRound(playerSelection, computerSelection) {
     return str;
 }
 
-const playerSelection = prompt("Enter your selection.");
-const computerSelection = computerPlay();
-alert(playRound(playerSelection, computerSelection));
+const numTimes = prompt("Enter how many times you would like to play");
+
+for(let i = 0; i < numTimes; i++){
+    const playerSelection = prompt("Enter your selection.");
+    const computerSelection = computerPlay();
+    alert(playRound(playerSelection, computerSelection));
+}
