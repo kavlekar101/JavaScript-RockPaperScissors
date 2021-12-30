@@ -1,5 +1,22 @@
+let compWins = 0;
+let playerWins = 0;
+
+function displayScore(div){
+    div.textContent = "Player Wins: " + playerWins + " , Computer Wins: " + compWins;
+
+    container.appendChild(div);
+}
+
+function displayWinner() {
+    if (playerWins == 5) {
+        alert("Congratulations! You have beaten the computer!");
+    } else if (compWins == 5) {
+        alert("Sorry, the computer has won the game. Maybe next time.");
+    }
+}
+
 function computerPlay() {
-    let arr = ["Rock", "Paper", "Scissors"];
+    let arr = ["rock", "paper", "scissors"];
     let num = Math.floor(Math.random() * 2);
     return arr[num];
 }
@@ -7,33 +24,39 @@ function computerPlay() {
 function playRound(playerSelection, computerSelection) {
     let str;
     switch (computerSelection) {
-        case "Rock": 
-            if(playerSelection.toLowerCase() == "rock") {
-                str = "its a tie!";
-            } else if (playerSelection.toLowerCase() == "paper") {
-                str = "player won!";
+        case "rock": 
+            if(playerSelection == "rock") {
+                str = "Both you and the computer selected rock, so it is a tie";
+            } else if (playerSelection == "paper") {
+                str = "Paper covers rock, you won!";
+                playerWins++;
             } else {
-                str = "Computer won";
+                str = "Rock crushes scissors, you lost!";
+                compWins++;
             }
         break;
 
-        case "Paper":
-            if (playerSelection.toLowerCase() == "rock") {
-                str = "Computer won";
-            } else if (playerSelection.toLowerCase() == "paper") {
-                str = "its a tie!";
+        case "paper":
+            if (playerSelection == "rock") {
+                str = "Paper covers rock, you lost!";
+                compWins++;
+            } else if (playerSelection == "paper") {
+                str = "Both you and the computer selected paper, so it is a tie";
             } else {
-                str = "player won!";
+                str = "Scissors cuts paper, you won!";
+                playerWins++;
             }
         break;
 
-        case "Scissors":
-            if (playerSelection.toLowerCase() == "rock") {
-                str = "player won!";
-            } else if (playerSelection.toLowerCase() == "paper") {
-                str = "Computer won";
+        case "scissors":
+            if (playerSelection == "rock") {
+                str = "Rock crushes scissors, you won!";
+                playerWins++;
+            } else if (playerSelection == "paper") {
+                str = "Scissors cuts paper, you lost!";
+                compWins++;
             } else {
-                str = "its a tie!";
+                str = "Both you and the computer selected scissors, so it is a tie";
             }
         break;
 
@@ -43,6 +66,22 @@ function playRound(playerSelection, computerSelection) {
     return str;
 }
 
-const playerSelection = prompt("Enter your selection.");
-const computerSelection = computerPlay();
-alert(playRound(playerSelection, computerSelection));
+// displays the winners
+const div = document.createElement('div');
+div.classList.add('content');
+
+/*
+* adding in the action listeners for the buttons.
+*/
+const buttons = document.querySelectorAll('button');
+
+// we use the .forEach method to iterate through each button
+buttons.forEach((button) => {
+
+    // and for each one we add a 'click' listener
+    button.addEventListener('click', () => {
+        playRound(button.id, computerPlay());
+        displayScore(div);
+        displayWinner();
+    });
+});
